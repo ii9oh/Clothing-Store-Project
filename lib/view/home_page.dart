@@ -4,6 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:store_project/controller/store_notifire.dart';
+import 'package:store_project/view/Utils/category_list_view_container.dart';
+import 'package:store_project/view/Utils/grid_view_container.dart';
+import 'package:store_project/view/Utils/show_name&options.dart';
 
 class HomePage extends ConsumerStatefulWidget {
   const HomePage({super.key});
@@ -28,159 +31,121 @@ class _HomePageState extends ConsumerState<HomePage> {
     final storeState = ref.watch(storeProvider);
 
     return Scaffold(
-      body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 20),
-          child: Column(
-            children: [
-              SizedBox(
-                height: 30,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Text(
-                    "Hi  ",
-                    style: GoogleFonts.poppins(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w400,
-                    ),
-                  ),
-                  Text(
-                    storeState.usersModel.username.toString(),
-                    style: GoogleFonts.poppins(
-                      fontSize: 30,
-                      fontWeight: FontWeight.w500,
-                    ),
-                  ),
-                  SizedBox(
-                    width: 175,
-                  ),
-                  Container(
-                    width: 42,
-                    height: 38,
+      body: SingleChildScrollView(
+        scrollDirection: Axis.vertical,
+        physics: ScrollPhysics(),
+        child: SafeArea(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: Column(
+              children: [
+                SizedBox(
+                  height: 30,
+                ),
+                nameOptionbar(
+                    name: storeState.usersModel.username.toString(),
+                    carFun: () {},
+                    optionFun: () {}),
+                SizedBox(
+                  height: 40,
+                ),
+                Form(
                     child: Stack(
-                      children: [
-                        Container(
-                          width: 38,
-                          height: 38,
-                          child: GestureDetector(
-                            child: Image.asset("assets/images/wishlist.png"),
-                            onTap: () {},
-                          ),
-                          //! Than add Red Dot Here
-                        )
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: 38,
-                    height: 38,
-                    child: GestureDetector(
-                      child: Image.asset("assets/images/burger button.png"),
-                      onTap: () {},
-                    ),
-                    //! Than add Red Dot Here
-                  )
-                ],
-              ),
-              SizedBox(
-                height: 66,
-              ),
-              Form(
-                  child: Stack(
-                alignment: AlignmentDirectional.centerStart,
-                children: [
-                  Container(
-                    width: 360,
-                    height: 30,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(40),
-                      border: Border.all(width: 0.50, color: Color(0xFFAFAFAF)),
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.only(left: 30),
-                      child: TextField(), //! Hide button arrow
-                    ),
-                  ),
-                  Icon(
-                    Icons.search,
-                    color: Colors.black26,
-                    weight: 20,
-                  ),
-                ],
-              )),
-              SizedBox(
-                height: 35,
-              ),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 26),
-                child: Column(
+                  alignment: AlignmentDirectional.centerStart,
                   children: [
-                    SizedBox(
-                      width: 450,
-                      child: Text(
-                        "Category",
-                        style: GoogleFonts.roboto(
-                          fontSize: 20,
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 1,
-                        ),
+                    Container(
+                      width: 360,
+                      height: 30,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(40),
+                        border:
+                            Border.all(width: 0.50, color: Color(0xFFAFAFAF)),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.only(left: 30),
+                        child: TextField(), //! Hide button arrow
                       ),
                     ),
+                    Icon(
+                      Icons.search,
+                      color: Colors.black26,
+                      weight: 20,
+                    ),
                   ],
+                )),
+                SizedBox(
+                  height: 35,
                 ),
-              ),
-              SizedBox(height: 20),
-              Expanded(
-                flex: 1,
-                child: ListView.builder(
-                  itemCount: storeState.categories.length,
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  physics: ScrollPhysics(),
-                  itemBuilder: (context, index) => Row(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 26),
+                  child: SizedBox(
+                    width: 450,
+                    child: Text(
+                      "Category",
+                      style: GoogleFonts.roboto(
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 1,
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
+                ConstrainedBox(
+                  constraints: const BoxConstraints.expand(
+                    height: 50,
+                  ),
+                  child: Expanded(
+                    child: ListView.builder(
+                      itemCount: storeState.categories.length,
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      physics: ScrollPhysics(),
+                      itemBuilder: (context, index) => categoryListView(
+                          categoryName: storeState.categories[index].toString(),
+                          tapFun: () {},
+                          cancelFun: () {}),
+                    ),
+                  ),
+                ),
+                SizedBox(height: 20),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
                     children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 20),
-                        child: GestureDetector(
-                          child: Container(
-                            width: 130,
-                            height: 39,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              border: Border.all(
-                                width: 0.50,
-                                color: Color(0xFFAFAFAF),
-                              ),
-                              borderRadius: BorderRadius.circular(10),
-                            ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text(
-                                  storeState.categories[index].toString(),
-                                  style: TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 12,
-                                    fontFamily: 'Roboto',
-                                    fontWeight: FontWeight.w600,
-                                    letterSpacing: 1,
-                                  ),
-                                ),
-                                Text("data"),
-                              ],
-                            ),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Column(
+                        children: [
+                          GridView.builder(
+                            scrollDirection: Axis.vertical,
+                            physics: ScrollPhysics(),
+                            shrinkWrap: true,
+                            itemCount: 1,
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 1),
+                            itemBuilder: (context, index) => Padding(
+                                padding: const EdgeInsets.all(6.0),
+                                child: Column(children: [
+                                  gridViewContainer(
+                                      image:
+                                          "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+                                      title: "title",
+                                      category: "category",
+                                      price: 100,
+                                      order: () {})
+                                ])),
                           ),
-                        ),
+                        ],
                       ),
                     ],
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
