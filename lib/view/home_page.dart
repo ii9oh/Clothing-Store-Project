@@ -117,30 +117,29 @@ class _HomePageState extends ConsumerState<HomePage> {
                       SizedBox(
                         height: 10,
                       ),
-                      Column(
-                        children: [
-                          GridView.builder(
-                            scrollDirection: Axis.vertical,
-                            physics: ScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: 1,
-                            gridDelegate:
-                                SliverGridDelegateWithFixedCrossAxisCount(
-                                    crossAxisCount: 1),
-                            itemBuilder: (context, index) => Padding(
-                                padding: const EdgeInsets.all(6.0),
-                                child: Column(children: [
-                                  gridViewContainer(
-                                      image:
-                                          "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
-                                      title: "title",
-                                      category: "category",
-                                      price: 100,
-                                      order: () {})
-                                ])),
+                      GridView.builder(
+                          scrollDirection: Axis.vertical,
+                          physics: ScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: 2,
+                          gridDelegate:
+                              const SliverGridDelegateWithMaxCrossAxisExtent(
+                            maxCrossAxisExtent: 200,
+                            childAspectRatio: 0.65,
+                            mainAxisSpacing: 20,
+                            crossAxisSpacing: 20,
                           ),
-                        ],
-                      ),
+                          itemBuilder: (context, index) {
+                            return gridViewContainer(
+                              image:
+                                  "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
+                              title: "title",
+                              category: "category",
+                              price: 100,
+                              order: () {},
+                              productView: () {},
+                            );
+                          }),
                     ],
                   ),
                 ),
