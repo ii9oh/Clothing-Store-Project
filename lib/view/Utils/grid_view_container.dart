@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 GestureDetector gridViewContainer(
         {required String title,
         required String category,
-        required double price,
+        required String price,
         required String image,
         required Function() order,
         required Function() productView}) =>
@@ -67,7 +67,7 @@ GestureDetector gridViewContainer(
                       ),
                       SizedBox(height: 10),
                       Text(
-                        price.toString(),
+                        price,
                         style: TextStyle(
                           color: Color(0xFF212121),
                           fontSize: 12,

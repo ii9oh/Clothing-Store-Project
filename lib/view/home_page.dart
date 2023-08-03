@@ -20,6 +20,7 @@ class _HomePageState extends ConsumerState<HomePage> {
   void initState() {
     final storeNotifier = ref.read(storeProvider.notifier);
     storeNotifier.getCategories();
+    storeNotifier.getProducts();
     storeNotifier.getUsers(1);
 
     super.initState();
@@ -42,10 +43,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                 SizedBox(
                   height: 30,
                 ),
-                nameOptionbar(
-                    name: storeState.usersModel.username.toString(),
-                    carFun: () {},
-                    optionFun: () {}),
+                nameOptionbar(name: "stor", carFun: () {}, optionFun: () {}),
                 SizedBox(
                   height: 40,
                 ),
@@ -121,7 +119,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                           scrollDirection: Axis.vertical,
                           physics: ScrollPhysics(),
                           shrinkWrap: true,
-                          itemCount: 2,
+                          itemCount: 1,
                           gridDelegate:
                               const SliverGridDelegateWithMaxCrossAxisExtent(
                             maxCrossAxisExtent: 200,
@@ -135,9 +133,10 @@ class _HomePageState extends ConsumerState<HomePage> {
                                   "https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg",
                               title: "title",
                               category: "category",
-                              price: 100,
+                              price: "100",
                               order: () {},
-                              productView: () {},
+                              productView: () =>
+                                  Navigator.pushNamed(context, "/Cart"),
                             );
                           }),
                     ],

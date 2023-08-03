@@ -8,7 +8,7 @@ import 'package:store_project/model/users_model.dart';
 class APICall {
   Dio dio = Dio();
 
-  Future<ProductsModel> getProducts() async {
+  Future<List<ProductsModel>> getProducts() async {
     try {
       dio.interceptors.add(PrettyDioLogger());
       dio.options.headers['Accept'] = 'application/json';
@@ -17,13 +17,16 @@ class APICall {
       Response response = await dio.get("https://fakestoreapi.com/products");
 
       if (response.statusCode == 200) {
-        final data = ProductsModel.fromJson(response.data!);
+        List<ProductsModel> list = [];
+        response.data!.forEach((element) {
+          list.add(ProductsModel.fromJson(element));
+        });
 
-        return data;
+        return list;
       }
     } catch (e) {}
 
-    return ProductsModel();
+    return [];
   }
 
   Future<List<String>> getCatagory() async {
@@ -46,6 +49,7 @@ class APICall {
     } catch (e) {}
     return [];
   }
+
   //----------------------------------------------------------------------------
 
   Future<CartsModel> getCarts() async {

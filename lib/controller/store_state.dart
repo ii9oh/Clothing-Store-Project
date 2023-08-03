@@ -3,13 +3,13 @@ import 'package:store_project/model/products_model.dart';
 import 'package:store_project/model/users_model.dart';
 
 class StoreState {
-  final ProductsModel productsModel;
+  final List<ProductsModel> products;
   final CartsModel cartsModel;
   final UsersModel usersModel;
   final List<String> categories;
 
   StoreState({
-    required this.productsModel,
+    required this.products,
     required this.cartsModel,
     required this.usersModel,
     required this.categories,
@@ -17,7 +17,7 @@ class StoreState {
 
   factory StoreState.Initial() {
     return StoreState(
-      productsModel: ProductsModel(),
+      products: [],
       cartsModel: CartsModel(),
       usersModel: UsersModel(),
       categories: [],
@@ -25,13 +25,13 @@ class StoreState {
   }
 
   StoreState copyWith({
-    ProductsModel? productsModel,
+    List<ProductsModel>? productsModel,
     CartsModel? cartsModel,
     UsersModel? usersModel,
     List<String>? categories,
   }) {
     return StoreState(
-      productsModel: productsModel ?? this.productsModel,
+      products: products,
       cartsModel: cartsModel ?? this.cartsModel,
       usersModel: usersModel ?? this.usersModel,
       categories: categories ?? this.categories,
