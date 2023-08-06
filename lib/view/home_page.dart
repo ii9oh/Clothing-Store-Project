@@ -94,17 +94,15 @@ class _HomePageState extends ConsumerState<HomePage> {
                   constraints: const BoxConstraints.expand(
                     height: 50,
                   ),
-                  child: Expanded(
-                    child: ListView.builder(
-                      itemCount: storeState.categories.length,
-                      shrinkWrap: true,
-                      scrollDirection: Axis.horizontal,
-                      physics: ScrollPhysics(),
-                      itemBuilder: (context, index) => categoryListView(
-                          categoryName: storeState.categories[index].toString(),
-                          tapFun: () {},
-                          cancelFun: () {}),
-                    ),
+                  child: ListView.builder(
+                    itemCount: storeState.categories.length,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    physics: ScrollPhysics(),
+                    itemBuilder: (context, index) => categoryListView(
+                        categoryName: storeState.categories[index].toString(),
+                        tapFun: () {},
+                        cancelFun: () {}),
                   ),
                 ),
                 SizedBox(height: 20),
