@@ -24,7 +24,9 @@ class APICall {
 
         return list;
       }
-    } catch (e) {}
+    } catch (e) {
+      print(e);
+    }
 
     return [];
   }

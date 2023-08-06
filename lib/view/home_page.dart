@@ -19,8 +19,8 @@ class _HomePageState extends ConsumerState<HomePage> {
   @override
   void initState() {
     final storeNotifier = ref.read(storeProvider.notifier);
-    storeNotifier.getCategories();
     storeNotifier.getProducts();
+    storeNotifier.getCategories();
     storeNotifier.getUsers(1);
 
     super.initState();
@@ -117,7 +117,7 @@ class _HomePageState extends ConsumerState<HomePage> {
                           scrollDirection: Axis.vertical,
                           physics: ScrollPhysics(),
                           shrinkWrap: true,
-                          itemCount: 1,
+                          itemCount: storeState.products.length,
                           gridDelegate:
                               const SliverGridDelegateWithMaxCrossAxisExtent(
                             maxCrossAxisExtent: 200,

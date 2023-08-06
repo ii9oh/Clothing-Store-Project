@@ -1,3 +1,5 @@
+// ignore_for_file: unnecessary_this
+
 import 'package:store_project/model/carts_model.dart';
 import 'package:store_project/model/products_model.dart';
 import 'package:store_project/model/users_model.dart';
@@ -25,13 +27,13 @@ class StoreState {
   }
 
   StoreState copyWith({
-    List<ProductsModel>? productsModel,
+    List<ProductsModel>? products,
     CartsModel? cartsModel,
     UsersModel? usersModel,
     List<String>? categories,
   }) {
     return StoreState(
-      products: products,
+      products: products ?? this.products,
       cartsModel: cartsModel ?? this.cartsModel,
       usersModel: usersModel ?? this.usersModel,
       categories: categories ?? this.categories,

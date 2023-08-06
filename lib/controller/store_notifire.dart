@@ -15,7 +15,7 @@ class StoreNotifier extends StateNotifier<StoreState> {
       final res = await APICall().getProducts();
 
       state = state.copyWith(
-        productsModel: res,
+        products: res,
       );
     } catch (e) {}
   }
