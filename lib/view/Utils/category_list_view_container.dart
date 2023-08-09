@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Row categoryListView({
   required String categoryName,
@@ -14,12 +15,12 @@ Row categoryListView({
             onTap: () {},
             onTapCancel: () {},
             child: Container(
-              width: 130,
-              height: 40,
+              width: 120.w,
+              height: 30.h,
               decoration: BoxDecoration(
                 color: Colors.white,
                 border: Border.all(
-                  width: 0.50,
+                  width: 1,
                   color: Color(0xFFAFAFAF),
                 ),
                 borderRadius: BorderRadius.circular(10),
@@ -31,7 +32,7 @@ Row categoryListView({
                     categoryName,
                     style: TextStyle(
                       color: Colors.black,
-                      fontSize: 12,
+                      fontSize: 11.sp,
                       fontFamily: 'Roboto',
                       fontWeight: FontWeight.w600,
                       letterSpacing: 1,

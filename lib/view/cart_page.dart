@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:store_project/view/Utils/cart_item_container.dart';
 import 'package:store_project/view/Utils/item_cart_listView.dart';
 
@@ -33,7 +34,7 @@ class _CartPageState extends ConsumerState<CartPage> {
           child: Column(
             children: [
               SizedBox(
-                height: 45,
+                height: MediaQuery.of(context).size.height / 15,
               ),
               cartItemContainer(itmeCount: 0),
               ListView.builder(
@@ -45,13 +46,14 @@ class _CartPageState extends ConsumerState<CartPage> {
                     itemsListView(title: "title", order: () {}),
               ),
               SizedBox(
-                height: 20,
+                height: //20,
+                    MediaQuery.of(context).size.height / 35,
               ),
               Padding(
                 padding: const EdgeInsets.only(bottom: 50),
                 child: Container(
-                    width: 350,
-                    height: 50,
+                    width: 280.w,
+                    height: 38.h,
                     decoration: BoxDecoration(boxShadow: [
                       BoxShadow(
                         color: Color(0x3F000000),
@@ -69,7 +71,14 @@ class _CartPageState extends ConsumerState<CartPage> {
                         ),
                       ),
                       onPressed: () {},
-                      child: Text("Checkout"),
+                      child: Text("Checkout",
+                          style: TextStyle(
+                            color: Color(0xFFFEFEFE),
+                            fontSize: 16.sp,
+                            fontFamily: 'Roboto',
+                            fontWeight: FontWeight.bold,
+                            letterSpacing: 0.60,
+                          )),
                     )),
               ),
             ],

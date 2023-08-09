@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:store_project/controller/store_notifire.dart';
 import 'package:store_project/view/Utils/category_list_view_container.dart';
@@ -41,19 +42,21 @@ class _HomePageState extends ConsumerState<HomePage> {
             child: Column(
               children: [
                 SizedBox(
-                  height: 30,
+                  height: MediaQuery.of(context).size.height / 30,
+                  //30,
                 ),
-                nameOptionbar(name: "stor", carFun: () {}, optionFun: () {}),
+                nameOptionBar(name: "Sohaib", cartFun: () {}, optionFun: () {}),
                 SizedBox(
-                  height: 40,
+                  height: //40,
+                      MediaQuery.of(context).size.height / 38,
                 ),
                 Form(
                     child: Stack(
                   alignment: AlignmentDirectional.centerStart,
                   children: [
                     Container(
-                      width: 360,
-                      height: 30,
+                      width: 290.w,
+                      height: 22.h,
                       decoration: BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(40),
@@ -65,31 +68,37 @@ class _HomePageState extends ConsumerState<HomePage> {
                         child: TextField(), //! Hide button arrow
                       ),
                     ),
-                    Icon(
-                      Icons.search,
-                      color: Colors.black26,
-                      weight: 20,
+                    Padding(
+                      padding: const EdgeInsets.only(left: 4),
+                      child: Icon(
+                        Icons.search,
+                        color: Colors.black26,
+                        weight: 20.w,
+                      ),
                     ),
                   ],
                 )),
                 SizedBox(
-                  height: 35,
+                  height: //35,
+                      MediaQuery.of(context).size.height / 32,
                 ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 26),
                   child: SizedBox(
-                    width: 450,
+                    width: 450.w,
                     child: Text(
                       "Category",
                       style: GoogleFonts.roboto(
-                        fontSize: 20,
+                        fontSize: 18.sp,
                         fontWeight: FontWeight.w600,
                         letterSpacing: 1,
                       ),
                     ),
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(
+                    height: //20
+                        MediaQuery.of(context).size.height / 58),
                 ConstrainedBox(
                   constraints: const BoxConstraints.expand(
                     height: 50,
@@ -105,19 +114,18 @@ class _HomePageState extends ConsumerState<HomePage> {
                         cancelFun: () {}),
                   ),
                 ),
-                SizedBox(height: 20),
+                SizedBox(
+                    height: //20
+                        MediaQuery.of(context).size.height / 55),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     children: [
-                      SizedBox(
-                        height: 10,
-                      ),
                       GridView.builder(
                           scrollDirection: Axis.vertical,
                           physics: ScrollPhysics(),
                           shrinkWrap: true,
-                          itemCount: storeState.products.length,
+                          itemCount: 8,
                           gridDelegate:
                               const SliverGridDelegateWithMaxCrossAxisExtent(
                             maxCrossAxisExtent: 200,

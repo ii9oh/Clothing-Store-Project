@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Container cartItemContainer({
   required int itmeCount,
 }) =>
     Container(
-      width: 360,
-      height: 55,
+      width: 310.w,
+      height: 40.h,
       decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(10),
@@ -27,7 +28,7 @@ Container cartItemContainer({
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Colors.black,
-                fontSize: 30,
+                fontSize: 25.sp,
                 fontFamily: 'Roboto',
                 fontWeight: FontWeight.w700,
               ),
@@ -37,7 +38,7 @@ Container cartItemContainer({
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Color(0xFF999999),
-                fontSize: 16,
+                fontSize: 14.sp,
                 fontFamily: 'Roboto',
                 fontWeight: FontWeight.w400,
               ),

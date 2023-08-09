@@ -40,7 +40,7 @@ class StoreNotifier extends StateNotifier<StoreState> {
 
   void getCategories() async {
     try {
-      final res = await APICall().getCatagory();
+      final res = await APICall().getCategory();
       state = state.copyWith(
         categories: res,
       );

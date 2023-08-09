@@ -31,7 +31,7 @@ class APICall {
     return [];
   }
 
-  Future<List<String>> getCatagory() async {
+  Future<List<String>> getCategory() async {
     try {
       dio.interceptors.add(PrettyDioLogger());
       dio.options.headers['Accept'] = 'application/json';

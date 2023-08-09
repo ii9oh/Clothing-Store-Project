@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 Padding itemsListView({
   required String title,
@@ -7,8 +8,7 @@ Padding itemsListView({
     Padding(
       padding: const EdgeInsets.only(left: 30, right: 30, bottom: 5, top: 20),
       child: Container(
-        width: 367,
-        height: 119,
+        height: 95.h,
         decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(10),
@@ -23,10 +23,11 @@ Padding itemsListView({
         child: Padding(
           padding: const EdgeInsets.only(left: 15, right: 10),
           child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                width: 100,
-                height: 100,
+                width: 80.w,
+                height: 80.h,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: NetworkImage(
@@ -35,36 +36,35 @@ Padding itemsListView({
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(12.0),
+              SizedBox(
+                width: 87.w,
+                height: 70.h,
                 child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      width: 110,
-                      height: 21,
-                      child: Text(
-                        'white t-shirt',
-                        style: TextStyle(
-                          color: Colors.black,
-                          fontSize: 16,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 0.80,
-                        ),
+                    Text(
+                      'white t-shirt',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 12.sp,
+                        fontFamily: 'Roboto',
+                        fontWeight: FontWeight.w600,
+                        letterSpacing: 0.80,
                       ),
+                      maxLines: 4,
                     ),
                     SizedBox(
-                      width: 110,
-                      child: Text(
-                        't-shirt',
-                        style: TextStyle(
-                          color: Color(0xFF999999),
-                          fontSize: 13,
-                          fontFamily: 'Roboto',
-                          fontWeight: FontWeight.w400,
-                        ),
+                      height: 3.h,
+                    ),
+                    Text(
+                      't-shirt',
+                      style: TextStyle(
+                        color: Color(0xFF999999),
+                        fontSize: 11.sp,
+                        fontFamily: 'Roboto',
+                        fontWeight: FontWeight.w400,
                       ),
-                    )
+                    ),
                   ],
                 ),
               ),
@@ -78,14 +78,14 @@ Padding itemsListView({
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black,
-                        fontSize: 13,
+                        fontSize: 12.sp,
                         fontFamily: 'Roboto',
                         fontWeight: FontWeight.w600,
                       ),
                     ),
                     SizedBox(
-                      width: 100,
-                      height: 40,
+                      width: 95.w,
+                      height: 30.h,
                       child: ElevatedButton(
                         onPressed: order,
                         style: ButtonStyle(
@@ -100,7 +100,7 @@ Padding itemsListView({
                           'Checkout',
                           style: TextStyle(
                             color: Color(0xFFFEFEFE),
-                            fontSize: 13,
+                            fontSize: 12.sp,
                             fontFamily: 'Roboto',
                             fontWeight: FontWeight.bold,
                             letterSpacing: 0.60,
