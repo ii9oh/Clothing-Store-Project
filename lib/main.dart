@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:store_project/common/service/get_it.dart';
 import 'package:store_project/view/cart_page.dart';
 import 'package:store_project/view/home_page.dart';
 
 void main() {
+  setup();
   runApp(const ProviderScope(child: MyApp()));
 }
 

@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:store_project/controller/store_notifire.dart';
+import 'package:store_project/fetures/domain/controller.dart';
 import 'package:store_project/view/Utils/category_list_view_container.dart';
 import 'package:store_project/view/Utils/grid_view_container.dart';
 import 'package:store_project/view/Utils/show_name&options.dart';
@@ -19,10 +19,10 @@ class HomePage extends ConsumerStatefulWidget {
 class _HomePageState extends ConsumerState<HomePage> {
   @override
   void initState() {
-    final storeNotifier = ref.read(storeProvider.notifier);
-    storeNotifier.getProducts();
-    storeNotifier.getCategories();
-    storeNotifier.getUsers(1);
+    final controller = ref.read(storeProvider.notifier);
+    controller.getProducts(context);
+    controller.getCarts(context);
+    controller.getUsers(context);
 
     super.initState();
   }
@@ -30,7 +30,7 @@ class _HomePageState extends ConsumerState<HomePage> {
   @override
   Widget build(BuildContext context) {
     //final storeNotifier = ref.read(storeProvider.notifier);
-    final storeState = ref.watch(storeProvider);
+    final state = ref.watch(storeProvider);
 
     return Scaffold(
       body: SingleChildScrollView(
@@ -104,12 +104,12 @@ class _HomePageState extends ConsumerState<HomePage> {
                     height: 50,
                   ),
                   child: ListView.builder(
-                    itemCount: storeState.categories.length,
+                    itemCount: state.categories.length,
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
                     physics: ScrollPhysics(),
                     itemBuilder: (context, index) => categoryListView(
-                        categoryName: storeState.categories[index].toString(),
+                        categoryName: state.categories[index].toString(),
                         tapFun: () {},
                         cancelFun: () {}),
                   ),

@@ -1,41 +1,41 @@
 // ignore_for_file: unnecessary_this
 
-import 'package:store_project/model/carts_model.dart';
-import 'package:store_project/model/products_model.dart';
-import 'package:store_project/model/users_model.dart';
+import 'package:store_project/fetures/carts/model/carts_model.dart';
+import 'package:store_project/fetures/products/model/products_model.dart';
+import 'package:store_project/fetures/users/model/users_model.dart';
 
 class StoreState {
   final List<ProductsModel> products;
-  final CartsModel cartsModel;
-  final UsersModel usersModel;
+  final List<CartsModel> carts;
+  final List<UsersModel> users;
   final List<String> categories;
 
   StoreState({
     required this.products,
-    required this.cartsModel,
-    required this.usersModel,
+    required this.carts,
+    required this.users,
     required this.categories,
   });
 
   factory StoreState.Initial() {
     return StoreState(
       products: [],
-      cartsModel: CartsModel(),
-      usersModel: UsersModel(),
+      carts: [],
+      users: [],
       categories: [],
     );
   }
 
   StoreState copyWith({
     List<ProductsModel>? products,
-    CartsModel? cartsModel,
-    UsersModel? usersModel,
+    List<CartsModel>? carts,
+    List<UsersModel>? users,
     List<String>? categories,
   }) {
     return StoreState(
       products: products ?? this.products,
-      cartsModel: cartsModel ?? this.cartsModel,
-      usersModel: usersModel ?? this.usersModel,
+      carts: carts ?? this.carts,
+      users: users ?? this.users,
       categories: categories ?? this.categories,
     );
   }
