@@ -118,39 +118,36 @@ class _HomePageState extends ConsumerState<HomePage> {
                 SizedBox(
                     height: //20
                         MediaQuery.of(context).size.height / 55),
-                //       Padding(
-                //         padding: const EdgeInsets.all(8.0),
-                //         child: Column(
-                //           children: [
-                //             GridView.builder(
-                //                 scrollDirection: Axis.vertical,
-                //                 physics: ScrollPhysics(),
-                //                 shrinkWrap: true,
-                //                 itemCount: 8,
-                //                 gridDelegate:
-                //                     const SliverGridDelegateWithMaxCrossAxisExtent(
-                //                   maxCrossAxisExtent: 200,
-                //                   childAspectRatio: 0.65,
-                //                   mainAxisSpacing: 20,
-                //                   crossAxisSpacing: 20,
-                //                 ),
-                //                 itemBuilder: (context, index) {
-                //                   return gridViewContainer(
-                //                     image: "",
-                //                     title: "title",
-                //                     category: "category",
-                //                     price: "100",
-                //                     order: () {},
-                //                     productView: () =>
-                //                         Navigator.pushNamed(context, "/Cart"),
-                //                   );
-                //                 }),
-                //           ],
-                //         ),
-                //       ),
-                //     ],
-                //   ),
-                // ),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: [
+                      GridView.builder(
+                          scrollDirection: Axis.vertical,
+                          physics: ScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: 8,
+                          gridDelegate:
+                              const SliverGridDelegateWithMaxCrossAxisExtent(
+                            maxCrossAxisExtent: 200,
+                            childAspectRatio: 0.65,
+                            mainAxisSpacing: 20,
+                            crossAxisSpacing: 20,
+                          ),
+                          itemBuilder: (context, index) {
+                            return gridViewContainer(
+                              image: "",
+                              title: "title",
+                              category: "category",
+                              price: "100",
+                              order: () {},
+                              productView: () =>
+                                  Navigator.pushNamed(context, "/Cart"),
+                            );
+                          }),
+                    ],
+                  ),
+                ),
               ],
             ),
           ),
