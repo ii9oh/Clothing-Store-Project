@@ -3,8 +3,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:store_project/view/Utils/cart_item_container.dart';
-import 'package:store_project/view/Utils/item_cart_listView.dart';
+import 'package:go_router/go_router.dart';
+import 'package:store_project/fetures/cart/view/util/cart_item_container.dart';
+import 'package:store_project/fetures/cart/view/util/item_cart_listView.dart';
 
 class CartPage extends ConsumerStatefulWidget {
   const CartPage({super.key});
@@ -36,7 +37,7 @@ class _CartPageState extends ConsumerState<CartPage> {
               SizedBox(
                 height: MediaQuery.of(context).size.height / 15,
               ),
-              cartItemContainer(itmeCount: 0),
+              cartItemContainer(itmeCount: 4),
               ListView.builder(
                 itemCount: 4,
                 shrinkWrap: true,

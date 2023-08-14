@@ -1,15 +1,16 @@
 import 'package:store_project/common/network/dio_client.dart';
+import 'package:store_project/common/network/endpoints.dart';
 import 'package:store_project/common/network/network_exceptions.dart';
 import 'package:store_project/common/network/result_api.dart';
 import 'package:store_project/common/service/get_it.dart';
-import 'package:store_project/fetures/users/model/users_model.dart';
+import 'package:store_project/fetures/shopping/domain/model/users_model.dart';
 
 class UsersApi {
   final myDio = getIt.get<DioClient>();
 
   Future<ResultApi<List<UsersModel>>> getUsers() async {
     try {
-      final res = await myDio.dio.get("https://fakestoreapi.com/users");
+      final res = await myDio.dio.get(EndPoints.users);
 
       if (res.statusCode == 200) {
         List<UsersModel> list = [];
