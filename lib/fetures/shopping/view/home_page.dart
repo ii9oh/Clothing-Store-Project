@@ -8,6 +8,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:store_project/fetures/shopping/domain/controller/controller.dart';
 import 'package:store_project/fetures/shopping/domain/state/state.dart';
+import 'package:store_project/fetures/shopping/view/side_bar.dart';
 import 'package:store_project/fetures/shopping/view/util/category_list_view_container.dart';
 import 'package:store_project/fetures/shopping/view/util/grid_view_container.dart';
 import 'package:store_project/fetures/shopping/view/util/lodding_page.dart';
@@ -21,6 +22,7 @@ class HomePage extends ConsumerStatefulWidget {
 }
 
 class _HomePageState extends ConsumerState<HomePage> {
+  GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   @override
   void initState() {
     final controller = ref.read(storeProvider.notifier);
@@ -37,6 +39,8 @@ class _HomePageState extends ConsumerState<HomePage> {
     return state.status == Status.loading
         ? loadingPage()
         : Scaffold(
+            key: _scaffoldKey,
+            endDrawer: SideBar(),
             body: SingleChildScrollView(
               scrollDirection: Axis.vertical,
               physics: ScrollPhysics(),
@@ -50,11 +54,13 @@ class _HomePageState extends ConsumerState<HomePage> {
                         //30,
                       ),
                       nameOptionBar(
-                          name: state.users.length != 0
-                              ? state.users[0].name!.firstname.toString()
-                              : '',
-                          cartFun: () => context.go("/Cart"),
-                          optionFun: () {}),
+                        name: state.users.length != 0
+                            ? state.users[0].name!.firstname.toString()
+                            : '',
+                        cartFun: () => context.go("/Cart"),
+                        optionFun: () =>
+                            _scaffoldKey.currentState!.openEndDrawer(),
+                      ),
                       SizedBox(
                         height: //40,
                             MediaQuery.of(context).size.height / 38,

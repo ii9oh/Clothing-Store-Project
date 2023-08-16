@@ -19,14 +19,14 @@ class _CartPageState extends ConsumerState<CartPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.white,
-        shadowColor: Colors.white,
-        iconTheme: IconThemeData(
-          color: Colors.black,
-          size: 35,
-          weight: Checkbox.width,
-        ),
-      ),
+          backgroundColor: Colors.white,
+          shadowColor: Colors.white,
+          iconTheme: IconThemeData(
+            color: Colors.black,
+            size: 40,
+          ),
+          leading: IconButton(
+              onPressed: () => context.go("/"), icon: Icon(Icons.arrow_back))),
       body: SafeArea(
           child: SingleChildScrollView(
         scrollDirection: Axis.vertical,
