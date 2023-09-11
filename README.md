@@ -1,6 +1,6 @@
 # store_project
 
-A new Flutter project.
+Cloth store with API with riverpod as state management.
 
 ## Getting Started
 
