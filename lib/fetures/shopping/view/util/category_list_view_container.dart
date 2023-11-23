@@ -4,7 +4,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 Row categoryListView({
   required String categoryName,
   required Function() tapFun,
-  required Function() cancelFun,
+  required Color color,
 }) =>
     Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -12,13 +12,12 @@ Row categoryListView({
         Padding(
           padding: const EdgeInsets.only(left: 20),
           child: GestureDetector(
-            onTap: () {},
-            onTapCancel: () {},
+            onTap: tapFun,
             child: Container(
               width: 120.w,
               height: 30.h,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color: color,
                 border: Border.all(
                   width: 1,
                   color: Color(0xFFAFAFAF),
